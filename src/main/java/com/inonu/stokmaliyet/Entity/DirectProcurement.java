@@ -1,8 +1,10 @@
 package com.inonu.stokmaliyet.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.inonu.stokmaliyet.Enum.TenderType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -31,14 +33,13 @@ public class DirectProcurement {
     }
 
     @ManyToOne
-    @JoinColumn(name = "product_id",nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     @JsonIgnore
-    private Product product; 
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "purchaseUnit_id")
-    private PurchasedUnit purchasedUnit; 
-
+    private PurchasedUnit purchasedUnit;
 
     @ManyToOne
     @JoinColumn(name = "purchaseType_id")
@@ -50,7 +51,6 @@ public class DirectProcurement {
     @Enumerated(EnumType.STRING)
     @Column(name = "tender_type")
     private TenderType tenderType;
-
 
     public Double getQuantity() {
         return Quantity;
@@ -139,7 +139,6 @@ public class DirectProcurement {
     public void setPurchaseType(PurchaseType purchaseType) {
         this.purchaseType = purchaseType;
     }
-
 
     public List<MaterialEntry> getMaterialEntries() {
         return materialEntries;
